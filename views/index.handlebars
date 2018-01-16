@@ -1,41 +1,57 @@
-{{!-- Setup the index.handlebars to have the template that Handlebars can render onto.
-Create a button in index.handlebars that will submit the user input into the database. --}}
+{{!-- Setup the index.handlebars to have the template that Handlebars can render onto. Create a button in index.handlebars
+that will submit the user input into the database. --}}
 
 <h1>Burgers!</h1>
 
 <h2>Burgers you can enjoy!</h2>
-
 <ul>
-  {{#each burger}}
-    {{#unless this.devoured}}
+  {{#each burgers}} 
+    {{#unless this.devoured}} 
+    <form method="post" action="/resource?_method=put">
 
-    {{/unless}}
+  <li>
+    {{this.burger_name}}
+
+    <button class="change-burgers" data-id="{{id}}">
+      Available!
+    </button>
+
+  </li>
+  </form>
+    {{/unless}} 
   {{/each}}
 </ul>
 
 <h2>Burgers that someone already ate!</h2>
 
 <ul>
-  {{#each burger}}
-    {{#if this.devoured}}
-    
-    {{/if}}
+  {{#each burgers}} 
+    {{#if this.devoured}} 
+    <li>
+    {{this.burger_name}}
+
+    Already eaten!
+
+  </li>
+    {{/if}} 
   {{/each}}
 </ul>
 
 <h2>Add a Burger</h2>
-<form class="create-form">
+<form class="create-form" >
 
-  {{!-- <div class="form-group">
+  <div class="form-group">
     <label for="ca">Burger Name:</label>
     <input type="text" id="ca" name="name">
   </div>
 
   <div class="form-group">
-    <label for="sleepy">Sleepy?</label><br>
-    <input type="radio" name="sleepy" value="1" checked> Sleepy!<br>
-    <input type="radio" name="sleepy" value="0"> Awake
-  </div> --}}
+    <label for="burger">Burger?</label>
+    <br>
+    <input type="radio" name="burger" value="1" checked> Burger's Available!
+    <br>
+    <input type="radio" name="burger" value="0"> Already Gone
+  </div>
 
   <button type="submit">Submit</button>
 </form>
