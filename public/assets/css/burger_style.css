@@ -30,12 +30,14 @@ body {
     border-style: solid;
     border-width: 15px;
     border-color: white;
+    margin-bottom: 15px;
 }
 
 #footer {
     border-style: solid;
     border-width: 15px;
     border-color: white;
+    margin-top: 15px;
 }
 
 img {
