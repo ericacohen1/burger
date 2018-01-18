@@ -1,55 +1,56 @@
-{{!-- Setup the index.handlebars to have the template that Handlebars can render onto. Create a button in index.handlebars
-that will submit the user input into the database. --}}
+<div id="header">
+  <h1>Eat the burger!</h1>
+  {{!--
+  <img src=" /assets/img/burger.png " alt="burger " class="img-responsive center-block ">
+</div> --}}
+<img src="http://moziru.com/images/burger-clipart-18.jpg">
+</div>
 
-<h1>Burgers!</h1>
+<div class="row">
+  <div class="col-md-5" id="available">
+    <h2>Burgers you can enjoy!</h2>
+    <div>
+      {{#each burgers}} {{#unless this.devoured}} {{!--
+      <form method="post " action="/ "> --}} {{!--
+        <form method="post " action="/resource?_method=put "> --}}
+          <form action="/{{this.id}}?_method=PUT " method="POST ">
 
-<h2>Burgers you can enjoy!</h2>
-<ul>
-  {{#each burgers}} 
-    {{#unless this.devoured}} 
-    <form method="post" action="/resource?_method=put">
+            <li>
+              {{this.burger_name}}
 
-  <li>
-    {{this.burger_name}}
+              <button class="change-burgers " data-id="{{id}} ">
+                Eat me!
+              </button>
 
-    <button class="change-burgers" data-id="{{id}}">
-      Eat me!
-    </button>
-
-  </li>
-  </form>
-    {{/unless}} 
-  {{/each}}
-</ul>
-
-<h2>Burgers that someone already ate!</h2>
-
-<ul>
-  {{#each burgers}} 
-    {{#if this.devoured}} 
-    <li>
-    {{this.burger_name}}
-
-    Already eaten!
-
-  </li>
-    {{/if}} 
-  {{/each}}
-</ul>
-
-<h2>Add a Burger</h2>
-<form class="create-form" method="POST" action="/resource?_method=POST">
-
-  <div class="form-group">
-    <label for="ca">Burger Name:</label>
-    <input type="text" id="ca" name="name">
+            </li>
+          </form>
+          {{/unless}} {{/each}}
+    </div>
   </div>
 
-  {{!-- <div class="form-group">
-    <input type="radio" name="burger" value="1" checked> Burger's Available!
-    <br>
-    <input type="radio" name="burger" value="0"> Already Gone
-  </div> --}}
+  <div class="col-md-5" id="eaten">
+    <h2>Burgers that someone already ate!</h2>
 
-  <button type="submit">Submit</button>
+    <ul>
+      {{#each burgers}} {{#if this.devoured}}
+      <li>
+        {{this.burger_name}} Already eaten!
+
+      </li>
+      {{/if}} {{/each}}
+    </ul>
+  </div>
+</div>
+
+<div id="footer">
+  <h2>Add a Burger</h2>
+  <form class="create-form " method="POST " action="/ ">
+
+    <div class="form-group ">
+      <label for="ca ">Burger Name:</label>
+      <input type="text " id="ca " name="name ">
+    </div>
+
+    <button type="submit ">Submit</button>
+</div>
 </form>
