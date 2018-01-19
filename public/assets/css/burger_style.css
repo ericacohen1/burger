@@ -5,8 +5,8 @@
 body {
 	background-color: lightgrey;
     margin-top: 40px;
-    margin-left: 15px;
-    margin-right: 15px;
+    margin-left: 50px;
+    margin-right: 50px;
     font-family: "Bodoni MT", Didot, "Didot LT STD", "Book Antiqua", Garamond, "Times New Roman", serif;
 }
 
@@ -43,8 +43,22 @@ body {
 img {
     width: 200px;
     padding-bottom: 12px;
+    /* float: left; */
 }
 
 h1 {
     font-weight: bold;
+}
+
+@media (max-width: 991px) {
+    #eaten {
+        float: left;
+        margin-left: 15px;
+        margin-right: 15px;
+        margin-top: 15px;
+    }
+}
+
+button {
+    margin-bottom: 5px;
 }

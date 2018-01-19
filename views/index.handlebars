@@ -7,28 +7,24 @@
 </div>
 
 <div class="row">
-  <div class="col-md-5" id="available">
+  <div class="col-md-5" id="available" class="middle">
     <h2>Burgers you can enjoy!</h2>
     <div>
-      {{#each burgers}} {{#unless this.devoured}} {{!--
-      <form method="post " action="/ "> --}} {{!--
-        <form method="post " action="/resource?_method=put "> --}}
-          <form action="/{{this.id}}?_method=PUT " method="POST ">
-
-            <li>
-              {{this.burger_name}}
-
-              <button class="change-burgers " data-id="{{id}} ">
-                Eat me!
-              </button>
-
-            </li>
-          </form>
-          {{/unless}} {{/each}}
+      {{#each burgers}} {{#unless this.devoured}}
+      <form action="/{{this.id}}?_method=PUT " method="POST ">
+        <input type="hidden" name="devoured" value="true">
+        <li>
+          {{this.burger_name}}
+          <button type="submit" class="change-burgers " data-id="{{id}} ">
+            Eat me!
+          </button>
+        </li>
+      </form>
+      {{/unless}} {{/each}}
     </div>
   </div>
 
-  <div class="col-md-5" id="eaten">
+  <div class="col-md-5" id="eaten" class="middle">
     <h2>Burgers that someone already ate!</h2>
 
     <ul>
@@ -48,9 +44,38 @@
 
     <div class="form-group ">
       <label for="ca ">Burger Name:</label>
-      <input type="text " id="ca " name="name ">
+      <input type="text " id="ca" name="name ">
     </div>
 
     <button type="submit ">Submit</button>
 </div>
 </form>
+
+
+{{!--
+<script>
+
+  $(".update-form").on("submit", function (event) {
+    // Make sure to preventDefault on a submit event.
+    event.preventDefault();
+
+    var updatedBurger = {
+      burger_name: $("#ca").val().trim()
+    };
+
+    var id = $(this).data("id");
+    console.log(this);
+    // Send the POST request.
+    $.ajax("/" + id, {
+      type: "PUT",
+      data: updatedBurger
+    }).then(
+      function () {
+        console.log("updated burger");
+        // Reload the page to get the updated list
+        location.assign("/");
+      }
+      );
+  });
+
+</script> --}}
