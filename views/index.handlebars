@@ -6,48 +6,54 @@
 <img src="http://moziru.com/images/burger-clipart-18.jpg">
 </div>
 
-<div class="row">
-  <div class="col-md-5" id="available" class="middle">
-    <h2>Burgers you can enjoy!</h2>
-    <div>
-      {{#each burgers}} {{#unless this.devoured}}
-      <form action="/{{this.id}}?_method=PUT " method="POST ">
-        <input type="hidden" name="devoured" value="true">
-        <li>
-          {{this.burger_name}}
-          <button type="submit" class="change-burgers " data-id="{{id}} ">
-            Eat me!
-          </button>
-        </li>
-      </form>
-      {{/unless}} {{/each}}
+<div class="panel panel-default">
+  <div class="panel-body">
+    <div class="row">
+      <div class="col-md-5" id="available" class="middle">
+        <h2>Burgers you can enjoy!</h2>
+        <div>
+          {{#each burgers}} {{#unless this.devoured}}
+          <form action="/{{this.id}}?_method=PUT" method="POST">
+            <input type="hidden" name="devoured" value="true">
+            <ul>
+              <li>
+                {{this.burger_name}}
+                <button type="submit" class="change-burgers" data-id="{{id}}">
+                  Eat me!
+                </button>
+              </li>
+            </ul>
+          </form>
+          {{/unless}} {{/each}}
+        </div>
+      </div>
+      <div class="col-md-1"></div>
+      <div class="col-md-5" id="eaten" class="middle">
+        <h2>Burgers that someone already ate!</h2>
+
+        <ul>
+          {{#each burgers}} {{#if this.devoured}}
+          <li>
+            {{this.burger_name}}
+
+          </li>
+          {{/if}} {{/each}}
+        </ul>
+      </div>
     </div>
-  </div>
-
-  <div class="col-md-5" id="eaten" class="middle">
-    <h2>Burgers that someone already ate!</h2>
-
-    <ul>
-      {{#each burgers}} {{#if this.devoured}}
-      <li>
-        {{this.burger_name}} Already eaten!
-
-      </li>
-      {{/if}} {{/each}}
-    </ul>
   </div>
 </div>
 
 <div id="footer">
   <h2>Add a Burger</h2>
-  <form class="create-form " method="POST " action="/ ">
+  <form class="create-form" method="POST" action="/api/burger">
 
-    <div class="form-group ">
-      <label for="ca ">Burger Name:</label>
-      <input type="text " id="ca" name="name ">
+    <div class="form-group">
+      <label for="ca">Burger Name:</label>
+      <input type="text" id="ca" name="name">
     </div>
 
-    <button type="submit ">Submit</button>
+    <button type="submit">Submit</button>
 </div>
 </form>
 
