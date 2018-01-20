@@ -57,31 +57,3 @@
 </div>
 </form>
 
-
-{{!--
-<script>
-
-  $(".update-form").on("submit", function (event) {
-    // Make sure to preventDefault on a submit event.
-    event.preventDefault();
-
-    var updatedBurger = {
-      burger_name: $("#ca").val().trim()
-    };
-
-    var id = $(this).data("id");
-    console.log(this);
-    // Send the POST request.
-    $.ajax("/" + id, {
-      type: "PUT",
-      data: updatedBurger
-    }).then(
-      function () {
-        console.log("updated burger");
-        // Reload the page to get the updated list
-        location.assign("/");
-      }
-      );
-  });
-
-</script> --}}
